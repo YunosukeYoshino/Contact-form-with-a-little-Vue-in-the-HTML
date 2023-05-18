@@ -50,12 +50,14 @@
               @focus="ageValidationVisible = false"
               @blur="ageValidationVisible = !age"
             />
-            <div
-              class="bg-red-400 text-white p-3 mt-3"
-              v-show="!age && ageValidationVisible"
-            >
-              年齢を入力して下さい
-            </div>
+            <Transition name="fade">
+              <div
+                class="bg-red-400 text-white p-3 mt-3"
+                v-show="!age && ageValidationVisible"
+              >
+                年齢を入力して下さい
+              </div>
+            </Transition>
           </div>
           <div class="mb-5">
             <label
@@ -72,12 +74,14 @@
               @focus="emailValidationVisible = false"
               @blur="emailValidationVisible = !email"
             />
-            <div
-              class="bg-red-400 text-white p-3 mt-3"
-              v-show="!email && emailValidationVisible"
-            >
-              メールアドレスを入力して下さい
-            </div>
+            <Transition name="fade">
+              <div
+                class="bg-red-400 text-white p-3 mt-3"
+                v-show="!email && emailValidationVisible"
+              >
+                メールアドレスを入力して下さい
+              </div>
+            </Transition>
           </div>
           <button
             type="button"
