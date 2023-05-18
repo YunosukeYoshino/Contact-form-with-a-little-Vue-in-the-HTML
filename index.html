@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact form with a little Vue in the HTML</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="app" class="flex items-center h-screen">
+      <div class="mx-auto w-full max-w-[550px]">
+        <form>
+          <div class="mb-5">
+            <label
+              class="mb-3 block text-base font-medium text-[#07074D]"
+              for="name"
+              >名前</label
+            >
+            <input
+              type="text"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              id="name"
+              required
+              v-model="name"
+              @focus="nameValidationVisible = false"
+              @blur="nameValidationVisible = !name"
+            />
+            <Transition name="fade">
+              <div
+                class="bg-red-400 text-white p-3 mt-3"
+                v-show="!name && nameValidationVisible"
+              >
+                名前を入力してください
+              </div>
+            </Transition>
+          </div>
+          <div class="mb-5">
+            <label
+              class="mb-3 block text-base font-medium text-[#07074D]"
+              for="age"
+              >年齢</label
+            >
+            <input
+              type="text"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              id="age"
+              required
+              v-model="age"
+              @focus="ageValidationVisible = false"
+              @blur="ageValidationVisible = !age"
+            />
+            <div
+              class="bg-red-400 text-white p-3 mt-3"
+              v-show="!age && ageValidationVisible"
+            >
+              年齢を入力して下さい
+            </div>
+          </div>
+          <div class="mb-5">
+            <label
+              class="mb-3 block text-base font-medium text-[#07074D]"
+              for="email"
+              >メールアドレス</label
+            >
+            <input
+              type="email"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              id="email"
+              required
+              v-model="email"
+              @focus="emailValidationVisible = false"
+              @blur="emailValidationVisible = !email"
+            />
+            <div
+              class="bg-red-400 text-white p-3 mt-3"
+              v-show="!email && emailValidationVisible"
+            >
+              メールアドレスを入力して下さい
+            </div>
+          </div>
+          <button
+            type="button"
+            class="disabled:bg-slate-300 hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
+            @click="validateForm"
+            :disabled="isButtonDisabled"
+          >
+            送信
+          </button>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
